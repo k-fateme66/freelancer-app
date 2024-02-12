@@ -8,10 +8,13 @@ import { HiArrowLeft } from "react-icons/hi";
 import { HiOutlinePencil } from "react-icons/hi";
 import Loader from "../../ui/Loader";
 
+const RESEND_TIME = 90;
+
 function CheckOTPFrom({ phoneNumber, onBack, onResendOtp, otpResponse }) {
   const [otp, setOtp] = useState("");
-  const [time, setTime] = useState(90);
+  const [time, setTime] = useState(RESEND_TIME);
   const navigate = useNavigate();
+
   const { mutateAsync, isPending } = useMutation({
     mutationFn: checkOtp,
   });
@@ -51,6 +54,7 @@ function CheckOTPFrom({ phoneNumber, onBack, onResendOtp, otpResponse }) {
       if (time) clearInterval(timer);
     };
   }, [time]);
+
   return (
     <form className="space-y-8" onSubmit={checkOtpHandler}>
       <div className="flex justify-between items-center">

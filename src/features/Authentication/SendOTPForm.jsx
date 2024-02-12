@@ -1,14 +1,14 @@
 import TextField from "../../ui/TextField";
 import Loader from "../../ui/Loader";
 
-function SendOTPForm({ isSendingOtp, phoneNumber, onChange, onSendOtp }) {
+function SendOTPForm({ isSendingOtp, onSubmit, register }) {
   return (
-    <form className="space-y-8" onSubmit={onSendOtp}>
+    <form className="space-y-8" onSubmit={onSubmit}>
       <TextField
         name="phoneNumber"
-        value={phoneNumber}
         lable="شماره موبایل"
-        onChange={onChange}
+        register={register}
+        requierd
       />
       {isSendingOtp ? (
         <Loader />

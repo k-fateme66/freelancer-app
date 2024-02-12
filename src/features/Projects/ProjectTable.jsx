@@ -1,57 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import { useProjectsOwner } from "./useProjectsOwner";
 import Loader from "../../ui/Loader";
 import Empty from "../../ui/Empty";
+import Table from "../../ui/Table";
+import ProjectRow from "./ProjectRow";
+import Modal from "../../ui/Modal";
+import CreateProjectForm from "./CreateProjectForm";
+import { HiOutlinePlus } from "react-icons/hi2";
 
 export default function ProjectTable() {
   const { isLoading, projects } = useProjectsOwner();
-  console.log(projects);
+  const [isShowAddProjectModal, setIsShowAddProjectModel] = useState(false);
   if (isLoading) return <Loader />;
-  // if (!projects.length) return <Empty resoursName="پروژه" />;
+  if (!projects.length) return <Empty resoursName="پروژه" />;
   return (
-    <div className="bg-secondary-0 overflow-x-auto">
-      <table>
-        <thead>
-          <tr className="title-row">
-            <th>#</th>
-            <th>عنوان پروژه‌ها</th>
-            <th>دسته‌بندی</th>
-            <th>بودجه</th>
-            <th>ددلاین</th>
-            <th>تگ‌ها</th>
-            <th>فریلنسر</th>
-            <th>وضعیت</th>
-            <th>عملیات</th>
-          </tr>
-        </thead>
-        {/* <tbody>
+    <>
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="font-bold text-xl"> لیست پروژه‌ها</h1>
+        <button
+          className="btn btn--primary flex items-center gap-x-1"
+          onClick={() => setIsShowAddProjectModel(!isShowAddProjectModal)}
+        >
+          <HiOutlinePlus className="w-5 h5" />
+          پروژه جدید
+        </button>
+        <Modal
+          title=" ایجاد پروژه جدید"
+          open={isShowAddProjectModal}
+          onClose={() => setIsShowAddProjectModel(!isShowAddProjectModal)}
+        >
+          <CreateProjectForm
+            onclose={() => setIsShowAddProjectModel(!isShowAddProjectModal)}
+          />
+        </Modal>
+      </div>
+      <Table>
+        <Table.Header>
+          <th>#</th>
+          <th>عنوان پروژه‌ها</th>
+          <th>دسته‌بندی</th>
+          <th>بودجه</th>
+          <th>ددلاین</th>
+          <th>تگ‌ها</th>
+          <th>فریلنسر</th>
+          <th>وضعیت</th>
+          <th>عملیات</th>
+        </Table.Header>
+        <Table.body>
           {projects.map((project, index) => (
-            <tr key={project._id}>
-              <td>{index + 1}</td>
-              <td>{project.title}</td>
-              <td>{project.catgory.title}</td>
-              <td>{project.budget}</td>
-              <td>{project.deadline}</td>
-              <td>
-                <div className="flex flex-wrap items-center gap-2 max-w-[200px]">
-                  {project.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </div>
-              </td>
-              <td>{project.freelancer?.name || "-"}</td>
-              <td>
-                {project.status === "OPEN" ? (
-                  <span className="badge badge--success">باز</span>
-                ) : (
-                  <span className="badge badge--secondary">بسته</span>
-                )}
-              </td>
-              <td>...</td>
-            </tr>
+            <ProjectRow key={project._id} project={project} index={index} />
           ))}
-        </tbody> */}
-      </table>
-    </div>
+        </Table.body>
+      </Table>
+    </>
   );
 }
