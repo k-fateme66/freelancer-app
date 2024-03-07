@@ -11,8 +11,32 @@ import { HiOutlinePlus } from "react-icons/hi2";
 export default function ProjectTable() {
   const { isLoading, projects } = useProjectsOwner();
   const [isShowAddProjectModal, setIsShowAddProjectModel] = useState(false);
-  if (isLoading) return <Loader />;
-  if (!projects.length) return <Empty resoursName="پروژه" />;
+  const renderTemplate = () => {
+    if (isLoading) return <Loader />;
+    if (!projects.length) return <Empty resoursName="پروژه" />;
+    return (
+      <Table>
+        <Table.Header>
+          <th>#</th>
+          <th>عنوان پروژه‌ها</th>
+          <th>دسته‌بندی</th>
+          <th>بودجه</th>
+          <th>ددلاین</th>
+          <th>تگ‌ها</th>
+          <th>فریلنسر</th>
+          <th>وضعیت</th>
+          <th>عملیات</th>
+          <th>درخواست‌ها</th>
+        </Table.Header>
+        <Table.body>
+          {projects.map((project, index) => (
+            <ProjectRow key={project._id} project={project} index={index} />
+          ))}
+        </Table.body>
+      </Table>
+    );
+  };
+
   return (
     <>
       <div className="flex justify-between items-center mb-8">
@@ -34,24 +58,7 @@ export default function ProjectTable() {
           />
         </Modal>
       </div>
-      <Table>
-        <Table.Header>
-          <th>#</th>
-          <th>عنوان پروژه‌ها</th>
-          <th>دسته‌بندی</th>
-          <th>بودجه</th>
-          <th>ددلاین</th>
-          <th>تگ‌ها</th>
-          <th>فریلنسر</th>
-          <th>وضعیت</th>
-          <th>عملیات</th>
-        </Table.Header>
-        <Table.body>
-          {projects.map((project, index) => (
-            <ProjectRow key={project._id} project={project} index={index} />
-          ))}
-        </Table.body>
-      </Table>
+      {renderTemplate()}
     </>
   );
 }

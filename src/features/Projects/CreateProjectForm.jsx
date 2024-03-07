@@ -8,33 +8,62 @@ import DatePickerField from "../../ui/DatePickerField";
 import useCategories from "../../hooks/useCategories";
 import useCreateProject from "./useCreateProject";
 import Loader from "../../ui/Loader";
-function CreateProjectForm({ onclose }) {
-  const [tags, setTags] = useState([]);
-  const [date, setDate] = useState(new Date());
+import useEditProject from "./useEditProject";
+
+function CreateProjectForm({ onclose, projectToEdit = {} }) {
+  const { _id: editId } = projectToEdit;
+  const isEditSession = Boolean(editId);
+  const {
+    title,
+    description,
+    budget,
+    category,
+    deadline,
+    tags: editTags,
+  } = projectToEdit;
+  let editValue = {};
+  if (isEditSession) {
+    editValue = { title, description, budget, category: category._id };
+  }
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm();
+  } = useForm({ defaultValues: editValue });
 
+  const [tags, setTags] = useState(editTags || []);
+  const [date, setDate] = useState(new Date(deadline || ""));
   const { categories } = useCategories();
   const { isCreating, creatProject } = useCreateProject();
+  const { isEditing, editProject } = useEditProject();
+
   const onSubmit = (data) => {
     const newProject = {
       ...data,
-      tags,
       deadline: new Date(date).toISOString(),
+      tags,
     };
-    creatProject(newProject, {
-      onSuccess: (data) => {
-        onclose();
-        reset();
-      },
-    });
-  };
 
-  console.log(categories);
+    if (isEditSession) {
+      editProject(
+        { id: editId, newProject },
+        {
+          onSuccess: (data) => {
+            onclose(), reset();
+          },
+        }
+      );
+    } else {
+      creatProject(newProject, {
+        onSuccess: (data) => {
+          onclose();
+          reset();
+        },
+      });
+    }
+  };
 
   return (
     <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
@@ -94,7 +123,7 @@ function CreateProjectForm({ onclose }) {
         <TagsInput value={tags} onChange={setTags} name="tags" />
       </div>
       <DatePickerField date={date} label="ددلاین" setDate={setDate} />
-      {isCreating ? (
+      {isCreating || isEditing ? (
         <Loader />
       ) : (
         <button type="submit" className="btn btn--primary w-full">

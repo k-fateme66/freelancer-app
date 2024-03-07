@@ -80,6 +80,9 @@
   .btn {
     @apply px-3 py-1 font-bold rounded-xl transition-all duration-300;
   }
+  .btn--xs {
+    @apply text-xs !px-2 !py-2;
+  }
   .btn--primary {
     @apply px-4 py-3 bg-primary-900 text-white hover:bg-primary-800 shadow-lg shadow-primary-300 dark:shadow-secondary-200;
   }
@@ -166,7 +169,7 @@ table .title-row {
 table td,
 table th {
   border-bottom: 1px solid rgb(var(--color-secondary-200));
-  text-align: right;
+  text-align: center;
   white-space: nowrap;
 }
 

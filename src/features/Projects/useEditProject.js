@@ -1,19 +1,21 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { removeProjrctsOwner } from "../../services/projectsService";
+import { editProjectApi } from "../../services/projectsService";
 import toast from "react-hot-toast";
 
-export default function useRemoveProject() {
-    const queryClient = useQueryClient()
-    const { isPaused: isDeleting, mutate: removeProject } = useMutation({
-        mutationFn: removeProjrctsOwner,
+export default function useEditProject() {
+    const queryClient = useQueryClient();
+
+    const { isPending: isEditing, mutate: editProject } = useMutation({
+        mutationFn: editProjectApi,
         onSuccess: (data) => {
             toast.success(data.message);
             queryClient.invalidateQueries({ queryKey: ["owner-projects"] })
         },
         onError: (error) => {
+            console.log(error);
             toast.error(error?.response?.data?.message);
         }
     })
 
-    return { isDeleting, removeProject }
+    return { isEditing, editProject }
 }

@@ -3,14 +3,13 @@ import "./App.css";
 import Auth from "./pages/Auth";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
-import CompleteProfile from "./pages/CompleteProfile";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 import AppLayout from "./ui/AppLayout";
-import Owner from "./pages/Owner";
 import OwnerDashbord from "./pages/OwnerDashbord";
 import Projects from "./pages/Projects";
 import Project from "./pages/Project";
+import CompleteProfileForm from "./features/Authentication/CompleteProfileForm";
 
 function App() {
   const queryClient = new QueryClient();
@@ -19,7 +18,7 @@ function App() {
       <Toaster />
       <Routes>
         <Route path="/auth" element={<Auth />} />
-        <Route path="/complete-profile" element={<CompleteProfile />} />
+        <Route path="/complete-profile" element={<CompleteProfileForm />} />
         <Route path="/" element={<Home />} />
         <Route path="/owner" element={<AppLayout />}>
           <Route index element={<Navigate to="dashbord" replace />} />

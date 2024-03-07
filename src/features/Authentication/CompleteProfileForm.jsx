@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import TextField from "../../ui/TextField";
-import InputRadio from "../../ui/InputRadio";
 import { useMutation } from "@tanstack/react-query";
 import { completeProfile } from "../../services/authService";
 import toast from "react-hot-toast";
@@ -19,8 +18,13 @@ function CompleteProfileForm() {
     mutationFn: completeProfile,
   });
   const onSubmit = async (data) => {
+    const newData = {
+      name: data.name,
+      email: data.email,
+      role: data.role,
+    };
     try {
-      const { user, message } = await mutateAsync({ data });
+      const { user, message } = await mutateAsync(newData);
       toast.success(message);
       if (!user.status !== 2) {
         navigate("/");
@@ -44,7 +48,10 @@ function CompleteProfileForm() {
             register={register}
             validationSchema={{
               required: "نام نام‌خانوادگی ضروری است",
-              minLength: 6,
+              minLength: {
+                value: 6,
+                message: "نام نام‌خانوادگی بیشتر از 6 کاراکتر میباشد",
+              },
             }}
             errors={errors}
           />
@@ -52,7 +59,7 @@ function CompleteProfileForm() {
             label="ایمیل"
             name="email"
             register={register}
-            type="email"
+            type="text"
             validationSchema={{
               required: "ایمیل ضروری است",
               pattern: {

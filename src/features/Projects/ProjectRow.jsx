@@ -8,6 +8,9 @@ import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import useRemoveProject from "./useRemoveProject";
 import CreateProjectForm from "./CreateProjectForm";
+import ToggleProjectStatus from "./ToggleProjectStatus";
+import { HiOutlineEye } from "react-icons/hi2";
+import { Link } from "react-router-dom";
 
 function ProjectRow({ project, index }) {
   const [isShowEditModal, setIsShowEditModel] = useState(false);
@@ -37,29 +40,33 @@ function ProjectRow({ project, index }) {
       </td>
       <td>{project.freelancer?.name || "-"}</td>
       <td>
-        {project.status === "OPEN" ? (
+        <ToggleProjectStatus project={project} />
+        {/* {project.status === "OPEN" ? (
           <span className="badge badge--success">باز</span>
         ) : (
           <span className="badge badge--secondary">بسته</span>
-        )}
+        )} */}
       </td>
       <td>
         <div className="flex items-center gap-x-4">
           <>
             <button onClick={() => setIsShowEditModel(!isShowEditModal)}>
-              <HiOutlinePencil className="w-5 h-5 text-primary-900" />
+              <HiOutlinePencil className="w-4 h-4 text-primary-900" />
             </button>
             <Modal
               open={isShowEditModal}
               title={`ویرایش ${project.title}`}
               onClose={() => setIsShowEditModel(!isShowEditModal)}
             >
-              <CreateProjectForm />
+              <CreateProjectForm
+                projectToEdit={project}
+                onclose={() => setIsShowEditModel(!isShowEditModal)}
+              />
             </Modal>
           </>
           <>
             <button onClick={() => setIsShowDeleteModel(!isShowDeleteModal)}>
-              <HiOutlineTrash className="w-5 h-5 text-error" />
+              <HiOutlineTrash className="w-4 h-4 text-error" />
             </button>
             <Modal
               open={isShowDeleteModal}
@@ -78,6 +85,11 @@ function ProjectRow({ project, index }) {
             </Modal>
           </>
         </div>
+      </td>
+      <td>
+        <Link to={project._id} className="text-center flex justify-center">
+          <HiOutlineEye className="w-5 h-5 text-primary-600" />
+        </Link>
       </td>
     </Table.Row>
   );

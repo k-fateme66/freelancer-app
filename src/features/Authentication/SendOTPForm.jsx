@@ -6,7 +6,7 @@ function SendOTPForm({ isSendingOtp, onSubmit, register }) {
     <form className="space-y-8" onSubmit={onSubmit}>
       <TextField
         name="phoneNumber"
-        lable="شماره موبایل"
+        label="شماره موبایل"
         register={register}
         requierd
       />
