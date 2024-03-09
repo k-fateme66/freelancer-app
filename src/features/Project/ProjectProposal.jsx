@@ -5,7 +5,6 @@ import Empty from "../../ui/Empty";
 
 function ProposalsTable({ proposals }) {
   if (!proposals.length) return <Empty resoursName="درخواستی" />;
-  console.log(proposals);
   return (
     <Table>
       <Table.Header>

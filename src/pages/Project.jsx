@@ -8,7 +8,6 @@ function Project() {
   const { isLoading, project } = useProject();
 
   if (isLoading) return <Loader />;
-  console.log(project.proposals);
   return (
     <div>
       <ProjectHeader project={project} />

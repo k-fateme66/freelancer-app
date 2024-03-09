@@ -20,7 +20,10 @@ function Modal({ open, title, onClose, children }) {
           <div className="border-b border-secondary-300 py-4  flex items-center justify-between">
             <p className=" font-bold text-base text-secondary-700">{title}</p>
             <button>
-              <HiMiniXMark onClick={() => onClose()} className="w-5 h-5" />
+              <HiMiniXMark
+                onClick={() => onClose()}
+                className="w-5 h-5 text-secondary-600"
+              />
             </button>
           </div>
           <div className="py-4">{children}</div>

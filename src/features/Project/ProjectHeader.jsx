@@ -2,7 +2,6 @@ import React from "react";
 import { HiArrowLeft } from "react-icons/hi2";
 import useMoveBack from "../../hooks/useMoveBack";
 function ProjectHeader({ project }) {
-  console.log(project.proposals);
   const onBack = useMoveBack();
   return (
     <div className="flex items-center justify-between mb-3">

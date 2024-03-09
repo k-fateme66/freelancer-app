@@ -40,7 +40,7 @@ export default function ProjectTable() {
   return (
     <>
       <div className="flex justify-between items-center mb-8">
-        <h1 className="font-bold text-xl"> لیست پروژه‌ها</h1>
+        <h1 className="font-bold text-xl text-secondary-600"> لیست پروژه‌ها</h1>
         <button
           className="btn btn--primary flex items-center gap-x-1"
           onClick={() => setIsShowAddProjectModel(!isShowAddProjectModal)}
