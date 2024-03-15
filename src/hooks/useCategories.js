@@ -13,6 +13,11 @@ export default function useCategories() {
         value: item._id
     }))
 
+    const transformedCategories = rawCategories.map((item) => ({
+        label: item.title,
+        value: item.englishTitle,
+    }))
 
-    return { isPending, categories }
+
+    return { isPending, categories, transformedCategories }
 }

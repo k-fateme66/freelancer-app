@@ -1,7 +1,8 @@
 import React from "react";
+import DashboardLayout from "../features/Owner/DashboardLayout";
 
 function OwnerDashboard() {
-  return <div>OwnerDashboard</div>;
+  return <DashboardLayout />;
 }
 
 export default OwnerDashboard;
