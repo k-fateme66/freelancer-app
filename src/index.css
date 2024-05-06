@@ -1,4 +1,9 @@
-@import url("/fonts.css");
+@import url("/fonts/fonts.css");
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+@import "swiper/css/scrollbar";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -49,6 +54,17 @@
       --color-secondary-0: 24, 33, 47;
       --backdrop-color: 0, 0, 0;
     }
+    --swiper-theme-color: #000;
+    --swiper-pagination-color: var(--swiper-theme-color);
+    --swiper-pagination-bullet-size: 8px;
+    --swiper-pagination-bullet-width: 8px;
+    --swiper-pagination-bullet-height: 8px;
+    --swiper-pagination-bullet-inactive-color: #000;
+    --swiper-pagination-bullet-inactive-opacity: 0.2;
+    --swiper-pagination-bullet-opacity: 1;
+    --swiper-pagination-bullet-horizontal-gap: 4px;
+    --swiper-pagination-bullet-vertical-gap: 6px;
+    --swiper-pagination-bottom: -8px;
   }
 }
 
@@ -68,9 +84,8 @@
 }
 
 .rti--tag {
-  background-color: rgb(var(--color-secondary-500)) !important;
+  background-color: rgb(var(--color-secondary-500));
   color: rgb(var(--color-secondary-100));
-  font-size: 0.75rem;
 }
 
 @layer components {
@@ -80,20 +95,20 @@
   .btn {
     @apply px-3 py-1 font-bold rounded-xl transition-all duration-300;
   }
-  .btn--xs {
-    @apply text-xs !px-2 !py-2;
-  }
   .btn--primary {
     @apply px-4 py-3 bg-primary-900 text-white hover:bg-primary-800 shadow-lg shadow-primary-300 dark:shadow-secondary-200;
   }
   .btn--secondary {
     @apply bg-secondary-600 text-secondary-100;
   }
+  .btn--green {
+    @apply px-4 py-3 bg-green-900 text-white hover:bg-green-800  shadow-green-300;
+  }
   .btn--outline {
     @apply border border-secondary-700 text-secondary-700;
   }
   .btn--danger {
-    @apply border border-rose-700 text-rose-700  py-3;
+    @apply border border-rose-700 text-rose-700;
   }
   .badge {
     @apply inline-block whitespace-nowrap rounded-xl px-2 py-0.5;
@@ -109,6 +124,9 @@
   }
   .badge--danger {
     @apply bg-red-500 text-white;
+  }
+  .category-banner {
+    @apply relative before:absolute before:w-[40px] before:h-[40px] before:bg-[#FBF7ED]  before:rounded-full before:top-4 before:right-4;
   }
 }
 
@@ -169,7 +187,7 @@ table .title-row {
 table td,
 table th {
   border-bottom: 1px solid rgb(var(--color-secondary-200));
-  text-align: center;
+  text-align: right;
   white-space: nowrap;
 }
 
@@ -186,3 +204,11 @@ table td {
 }
 
 /*  react tag input */
+.swiper-pagination-bullet {
+  transition: 0.75s all ease-in-out;
+}
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  width: 9px;
+  height: 9px;
+  border-radius: 100%;
+}

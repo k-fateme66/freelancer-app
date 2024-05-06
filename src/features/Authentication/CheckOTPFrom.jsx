@@ -32,13 +32,14 @@ function CheckOTPFrom({ phoneNumber, onBack, onResendOtp, otpResponse }) {
       toast.success(message);
       console.log(user);
       if (!user.isActive) return navigate("/complete-profile");
-      if (user.status === 2) {
+      if (user.status !== 2) {
         navigate("/");
         toast("پروفایل شما در انتظار تایید است");
         return;
       }
       if (user.role === "OWNER") return navigate("/owner");
       if (user.role === "FREELANCER") return navigate("/freelancer");
+      if (user.role === "ADMIN") return navigate("/admin");
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }

@@ -18,9 +18,14 @@ import Proposals from "./pages/Proposals";
 import SubmittedProjects from "./pages/SubmittedProjects";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ProtectedRoute from "./ui/ProtectedRoute";
+import AdminLayout from "./features/Admin/AdminLayout";
+import AdminDashboard from "./pages/AdminDashboard";
+import Users from "./pages/Users";
+import useAos from "./hooks/useAos";
 
 function App() {
   const queryClient = new QueryClient();
+  useAos();
   return (
     <DarkModeProvier>
       <QueryClientProvider client={queryClient}>
@@ -30,6 +35,20 @@ function App() {
           <Route path="/auth" element={<Auth />} />
           <Route path="/complete-profile" element={<CompleteProfileForm />} />
           <Route path="/" element={<Home />} />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<Navigate to="dashboard" replace />} />
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="users" element={<Users />} />
+            <Route path="proposals" element={<Proposals />} />
+            <Route path="projects" element={<SubmittedProjects />} />
+          </Route>
           <Route
             path="/owner"
             element={
