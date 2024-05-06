@@ -1,4 +1,4 @@
-import { HiMagnifyingGlass } from "react-icons/hi2";
+import { HiMagnifyingGlass, HiArrowLeft } from "react-icons/hi2";
 import Counter from "./Counter";
 import {
   MouseParallaxContainer,
@@ -8,22 +8,22 @@ import {
   BsPostcard,
   BsPersonVcard,
   BsCreditCard2Front,
-  BsReceiptCutoff,
+  BsCardChecklist,
 } from "react-icons/bs";
+import { FaRegHandshake } from "react-icons/fa";
+
 import BoxIcon from "./BoxIcon";
 import SliderCategories from "./SliderCategories";
-import { NavLink } from "react-router-dom";
 
 function HomeMain() {
   return (
     <>
-      <section className="bg-gradient-to-b from-[#FBF7ED] to-[#FBF7ED00] min-h-screen">
-        <div className="container mx-auto max-w-screen-xl py-20">
-          <div className="flex items-center">
-            <div className="py-3 pl-14 pr-3 basis-1/2">
+      <section className="bg-gradient-to-b from-[#FBF7ED] to-[#FBF7ED00] ">
+        <div className="container mx-auto max-w-screen-xl py-20 px-4 lg:px-0">
+          <div className="flex items-center justify-center">
+            <div className="py-3 lg:pl-14  lg:basis-1/2 w-full">
               <h2
                 data-aos="fade-up"
-                data-aos-duration="800"
                 className="text-[2rem] mb-9 font-bold text-green-900"
               >
                 بیش از ۱۰ هزار
@@ -31,24 +31,22 @@ function HomeMain() {
               </h2>
               <div
                 data-aos="fade-up"
-                data-aos-duration="800"
                 data-aos-delay="100"
-                className="w- full mb-8 border rounded-xl flex items-center py-3 pr-8 pl-3 gap-x-4 bg-secondary-0 border-green-900"
+                className="w-full mb-8 border rounded-xl space-y-3 lg:space-y-0 flex md:flex-row flex-col items-center py-3 lg:pr-8 pl-3 pr-3 gap-x-4 bg-secondary-0 border-green-900"
               >
-                <HiMagnifyingGlass className="w-5 h-5 text-green-900" />
+                <HiMagnifyingGlass className="w-5 h-5 text-green-900 hidden md:inline-block" />
                 <input
-                  className="flex-1 bg-transparent"
+                  className="md:flex-1 bg-transparent w-full"
                   placeholder="دنبال چی میگردی؟"
                 />
-                <button className="btn btn--green text-white  px-8 py-4">
+                <button className="btn btn--green text-white  px-8 py-4 md:w-auto w-full">
                   جستجو
                 </button>
               </div>
               <div
                 data-aos="fade-up"
-                data-aos-duration="800"
                 data-aos-delay="150"
-                className="flex items-center justify-between"
+                className="grid grid-cols-2 md:grid-cols-4 gap-3  items-center justify-between"
               >
                 <Counter title="فریلنسر" number="700" />
                 <Counter title="پروژه تمام شده" number="200" />
@@ -58,7 +56,6 @@ function HomeMain() {
             </div>
             <div
               data-aos="fade-up"
-              data-aos-duration="800"
               data-aos-delay="200"
               className="basis-1/2 bg-center bg-auto h-full relative hidden lg:block"
               style={{
@@ -118,24 +115,22 @@ function HomeMain() {
           </div>
         </div>
       </section>
-      <section className="pr-8">
-        <div className="px-5 py-14 bg-green-950/90 rounded-tr-3xl">
-          <div className="container mx-auto max-w-screen-xl">
+      <section className="lg:pr-8">
+        <div className="py-14 bg-green-950/90 rounded-tr-3xl md:rounded-tl-3xl">
+          <div className="container mx-auto max-w-screen-xl px-4 lg:px-0">
             <h3
               data-aos="fade-up"
-              data-aos-duration="800"
               className="text-secondary-0 text-[1.7rem] font-bold text-center"
             >
               پروژه‌ی خود را سفارش دهید
             </h3>
             <p
               data-aos="fade-up"
-              data-aos-duration="800"
               className="text-secondary-0/80 text-sm text-center mb-8"
             >
               دسترسی به پروفایل هزاران فریلنسر و نمونه کار
             </p>
-            <div className="flex justify-between">
+            <div className="grid lg:grid-cols-4 grid-cols-2">
               <BoxIcon
                 delay="100"
                 icon={
@@ -156,10 +151,10 @@ function HomeMain() {
               <BoxIcon
                 delay="200"
                 icon={
-                  <BsReceiptCutoff className="w-10 h-10 text-secondary-0 mb-5" />
+                  <BsCardChecklist className="w-10 h-10 text-secondary-0 mb-5" />
                 }
                 title="بررسی پیشنهاد"
-                description=" از هزاران فریلنسر پیشنهاد دریافت می‌کنید و با بررسی نمونه کارها، می‌توانید بهترین پیشنهاد را انتخاب کنید."
+                description="  با بررسی نمونه کارها، بهترین پیشنهاد را انتخاب کنید."
               />
               <BoxIcon
                 delay="250"
@@ -174,35 +169,26 @@ function HomeMain() {
         </div>
       </section>
       <section>
-        <div className="container mx-auto max-w-screen-xl py-20">
-          <h3
-            className="text-[1.7rem] font-bold"
-            data-aos="fade-up"
-            data-aos-duration="800"
-          >
+        <div className="container mx-auto max-w-screen-xl py-20 px-4 lg:px-0">
+          <h3 className="text-[1.7rem] font-bold" data-aos="fade-up">
             دسته‌بندی پروژه‌ها
           </h3>
-          <p
-            data-aos="fade-up"
-            data-aos-duration="800"
-            className="text-sm mb-16"
-          >
+          <p data-aos="fade-up" className="text-sm mb-16">
             بیش از ۱۸۰۰ مهارت الهام بگیرید
           </p>
-          <SliderCategories
-            data-aos="fade-up"
-            data-aos-duration="800"
-            data-aos-delay="250"
-          />
+          <SliderCategories data-aos="fade-up" data-aos-delay="250" />
         </div>
       </section>
       <section
-        className="bg-left-top bg-no-repeat bg-cover py-20"
+        className="bg-left-top bg-no-repeat bg-cover py-32"
         style={{ backgroundImage: `url('/img/h5-bg.jpg')` }}
       >
-        <div className="container mx-auto max-w-screen-xl">
-          <div className="flex items-center justify-center">
-            <div className="basis-1/2 pl-14">
+        <div className="container mx-auto max-w-screen-xl px-4 lg:px-0">
+          <div className="flex flex-col lg:flex-row lg:space-y-0 space-y-4 items-center justify-center">
+            <div
+              className="lg:basis-1/2 basis-full lg:pl-14"
+              data-aos="fade-up"
+            >
               <h2 className="text-[2rem] font-bold mb-8">
                 استعدادهای مورد نیاز برای رشد کسب و کار خود را بیابید.
               </h2>
@@ -214,7 +200,103 @@ function HomeMain() {
                 ایجاد پروژه
               </a>
             </div>
-            <div className="basis-1/2"></div>
+            <div className="lg:basis-1/2  basis-full flex flex-col lg:flex-row lg:space-y-0 space-y-8 gap-x-8">
+              <div className="basis-1/2 space-y-8">
+                <div
+                  className="bg-secondary-0 p-8 rounded-lg w-full text-center"
+                  data-aos="zoom-in"
+                >
+                  <h5 className="font-bold text-3xl mb-5">تعامل مستقیم</h5>
+                  <p>
+                    پس از ایجاد پروژه، می‌توانید از طریق بخش گفتگوی سایت با
+                    فریلنسرها در ارتباط باشید.
+                  </p>
+                </div>
+                <div
+                  className="bg-secondary-0 p-8 rounded-lg w-full text-center"
+                  data-aos="zoom-in"
+                >
+                  <h5 className="font-bold text-5xl mb-5">۹۸%</h5>
+                  <p>۹۸ درصد از مشتریان از فریلنسرهای خود راضی هستند</p>
+                </div>
+              </div>
+              <div className="basis-1/2 ">
+                <div
+                  className="bg-secondary-0 p-8 rounded-lg w-full text-center text-secondary-900"
+                  data-aos="zoom-in"
+                >
+                  <h5 className="font-bold text-3xl mb-5">۱۰۰۰K+ فریلنسر</h5>
+                  <p>
+                    پروژه‌های خود را به راحتی برون‌سپاری کنید و برای انجام آن‌ها
+                    به بهترین شکل ممکن، نیروی متخصص استخدام کنید
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-24">
+        <div className="container mx-auto max-w-screen-xl px-4 lg:px-0">
+          <div className="flex lg:flex-row flex-col items-center justify-between">
+            <div className="basis-1/2">
+              <img
+                src="/img/h51.jpg"
+                alt="image"
+                className="w-full hidden md:block"
+                data-aos="zoom-in"
+              />
+            </div>
+            <div className="basis-1/2 lg:pr-16">
+              <h2 className="text-3xl font-bold mb-10" data-aos="fade-up">
+                بهترین فرصت‌های کاری را پیدا کنید
+              </h2>
+              <div
+                className="flex items-start gap-x-10 mb-5"
+                data-aos="fade-up"
+                data-aos-delay="50"
+              >
+                <div className="category-banner before:w-[25px] before:h-[25px] before:top-4 before:right-4 mb-9">
+                  <BsPersonVcard className="w-8 h-8 text-green-900 mb-5 relative z-0" />
+                </div>
+                <div>
+                  <h5 className="font-bold mb-3">ایجاد پروفایل حرفه‌ای</h5>
+                  <p className="text-secondary-900/70">
+                    خودتان را با نمونه کارها بهتر معرفی کنید
+                  </p>
+                </div>
+              </div>
+              <div
+                className="flex items-start gap-x-10 mb-5"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
+                <div className="category-banner before:w-[25px] before:h-[25px] before:top-4 before:right-4 mb-9">
+                  <FaRegHandshake className="w-8 h-8 text-green-900 mb-5 relative z-0" />
+                </div>
+                <div>
+                  <h5 className="font-bold mb-3">تعامل با کارفرما</h5>
+                  <p className="text-secondary-900/70">
+                    با ارسال پیشنهاد به پروژه‌ها کسب درآمد کنید.
+                  </p>
+                </div>
+              </div>
+              <div
+                className="flex items-start gap-x-10 mb-5"
+                data-aos="fade-up"
+                data-aos-delay="150"
+              >
+                <div className="category-banner before:w-[25px] before:h-[25px] before:top-4 before:right-4 mb-9">
+                  <BsCreditCard2Front className="w-8 h-8 text-green-900 mb-5 relative z-0" />
+                </div>
+                <div>
+                  <h5 className="font-bold mb-3">صندوق امن</h5>
+                  <p className="text-secondary-900/70">
+                    هزینه انجام پروژه از صندوق امن برداشت خواهید کرد.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

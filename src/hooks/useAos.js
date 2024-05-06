@@ -5,7 +5,8 @@ import { useEffect } from "react";
 export default function useAos() {
     useEffect(() => {
         AOS.init({
-            once: true
+            once: true,
+            duration: 1500,
         });
     }, []);
 }

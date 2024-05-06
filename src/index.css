@@ -110,6 +110,9 @@
   .btn--danger {
     @apply border border-rose-700 text-rose-700;
   }
+  .btn--link {
+    @apply hover:text-green-900;
+  }
   .badge {
     @apply inline-block whitespace-nowrap rounded-xl px-2 py-0.5;
   }
