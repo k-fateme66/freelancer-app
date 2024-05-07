@@ -11,15 +11,15 @@ function FreelancerLayout() {
       <Sidebar>
         <CustomNavLink to="dashboard">
           <HiHome />
-          <span>داشبورد</span>
+          <span className="hidden md:inline-block">داشبورد</span>
         </CustomNavLink>
         <CustomNavLink to="projects">
           <HiMiniRectangleStack />
-          <span>پروژه‌ها</span>
+          <span className="hidden md:inline-block">پروژه‌ها</span>
         </CustomNavLink>
         <CustomNavLink to="proposals">
           <HiMiniRectangleGroup />
-          <span>درخواست‌ها</span>
+          <span className="hidden md:inline-block">درخواست‌ها</span>
         </CustomNavLink>
       </Sidebar>
     </AppLayout>

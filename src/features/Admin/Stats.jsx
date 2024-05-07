@@ -7,7 +7,7 @@ import {
 } from "react-icons/hi2";
 function Stats({ proposals, users, projects }) {
   return (
-    <div className="grid grid-cols-3 gap-8">
+    <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
       <Stat
         icon={<HiOutlineUsers className="w-11 h-11" />}
         title="کاربران"

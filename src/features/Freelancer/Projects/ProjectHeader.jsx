@@ -30,9 +30,9 @@ function ProjectHeader() {
     },
   ];
   return (
-    <div className="flex justify-between items-center mb-8">
+    <div className="flex  md:flex-row flex-col justify-between md:items-center items-start gap-4 md:gap-0 mb-8">
       <h1 className="font-bold text-xl text-secondary-600"> لیست پروژه‌ها</h1>
-      <div className="flex gap-x-8 items-center">
+      <div className="flex md:flex-row flex-col md:gap-x-8 gap-2 md:items-center">
         <p>فیلترها:</p>
         <FilterButton options={sortOptions} filterField="sort" />
         <FilterDropDown options={statusOptions} filterField="status" />

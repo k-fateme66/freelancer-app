@@ -16,7 +16,7 @@ function HomeHeader() {
         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <div className="lg:flex-grow lg:flex hidden gap-x-5">
             <Link to="/" className="ml-6">
-              <img src="/public/img/logo.png" alt="freelancer-logo" />
+              <img src="/img/logo.png" alt="freelancer-logo" />
             </Link>
             {navlinks.map((navLink) => (
               <CustomNavlLinkHeader to={navLink.link} key={navLink.link}>

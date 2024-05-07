@@ -10,11 +10,11 @@ function OwnerLayout() {
       <Sidebar>
         <CustomNavLink to="dashboard">
           <HiHome />
-          <span>داشبورد</span>
+          <span className="hidden md:inline-block">داشبورد</span>
         </CustomNavLink>
         <CustomNavLink to="projects">
           <HiMiniRectangleGroup />
-          <span>پروژه ها</span>
+          <span className="hidden md:inline-block">پروژه ها</span>
         </CustomNavLink>
       </Sidebar>
     </AppLayout>

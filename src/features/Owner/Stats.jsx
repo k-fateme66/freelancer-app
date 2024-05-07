@@ -13,7 +13,7 @@ function Stats({ projects }) {
     0
   );
   return (
-    <div className="grid grid-cols-3 gap-8">
+    <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
       <Stat
         icon={<HiMiniSquares2X2 className="w-11 h-11" />}
         title="پروژه‌ها"
